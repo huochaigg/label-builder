@@ -1,0 +1,92 @@
+:root {
+  --color-background: #ffffff; /* 背景色 */
+  --color-surface: #f1f1f1; /* 卡片、容器背景色 */
+  --color-surface-hover: #eae9e9; /* 卡片、容器悬停背景色 */
+  --color-surface-shadow: rgba(0, 0, 0, 0.1); /* 卡片、容器阴影色 */
+  --color-primary: #007bff; /* 主色 */
+  --color-secondary: #90caf9; /* 次要色 */
+  --color-text-primary: #212121; /* 主要文本色 */
+  --color-text-secondary: #616161; /* 次要文本色 */
+  --color-border: #e0e0e0; /* 边框色 */
+  --color-error: #d32f2f; /* 错误色 */
+  
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: var(--color-background);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark-theme {
+  --color-background: #121212;
+  --color-surface: #1e1e1e;
+  --color-surface-hover: #2c2c2c;
+  --color-surface-shadow: rgba(0, 0, 0, 0.2);
+  --color-primary: #c19213;
+  --color-secondary: #e9aa18f1;
+  --color-text-primary: #e0e0e0;
+  --color-text-secondary: #a0a0a0;
+  --color-border: #333333;
+  --color-error: #f44336;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: var(--color-text-primary);
+}
+
+p,div,span,ul,ol,li {
+  color: var(--color-text-secondary);
+}
+
+button {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border: none;
+  font-family: fantasy;
+}
+
+button:hover {
+  background-color: var(--color-secondary);
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.page_container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+}
