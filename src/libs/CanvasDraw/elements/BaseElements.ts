@@ -1,4 +1,4 @@
-import ControllerMiddleWare from './controllerMiddleWare';
+import ControllerMiddleWare from './ControllerMiddleWare';
 
 export default abstract class BaseElement {
   abstract type: string; // 元素类型

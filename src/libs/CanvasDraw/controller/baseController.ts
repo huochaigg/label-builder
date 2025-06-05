@@ -1,4 +1,4 @@
-import ControllerMiddleWare from "../elements/controllerMiddleWare";
+import ControllerMiddleWare from "../elements/ControllerMiddleWare";
 import BaseElement from "../elements/BaseElements";
 
 export default abstract class BaseController {

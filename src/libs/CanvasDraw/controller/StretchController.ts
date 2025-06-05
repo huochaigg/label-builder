@@ -1,5 +1,5 @@
 /***
- * ScaleController
+ * StretchController
  * @description 控制器，用于绘制缩放图标
  */
 
@@ -7,7 +7,10 @@ import BaseController from './baseController'
 import BaseElement from '../elements/BaseElements';
 import ControllerMiddleWare from '../elements/ControllerMiddleWare';
 
-export default class ScaleController extends BaseController {
+import StretchIcon from '../../assets/images/stretch.png';
+import StretchDarkIcon from '../../assets/images/stretch_dark.png';
+
+export default class StretchController extends BaseController {
   element: BaseElement | null = null;
   iconSize = 20;
   x = 0;
@@ -58,5 +61,10 @@ export default class ScaleController extends BaseController {
 
   get ctx(): CanvasRenderingContext2D | null {
     return this.element ? (this.element as unknown as BaseElement).ctx : null;
+  }
+
+  get icon(): string {
+    // 返回删除图标的路径
+    return process.env.THEME === 'light' ? StretchIcon : StretchDarkIcon;
   }
 }

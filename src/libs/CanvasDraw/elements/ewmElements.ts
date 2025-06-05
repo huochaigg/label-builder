@@ -1,6 +1,6 @@
 import BaseElement from './BaseElements';
 import { createSymbol } from '../utils/canvas';
-import ControllerMiddleWare from './controllerMiddleWare';
+import ControllerMiddleWare from './ControllerMiddleWare';
 
 export default class EwmElement extends BaseElement {
   type = 'ewm'; // 元素类型：二维码
@@ -10,7 +10,7 @@ export default class EwmElement extends BaseElement {
   height = 100; // 元素的高度
   x = 10; // 元素的x坐标
   y = 10; // 元素的y坐标
-  text = '12345678'; // 二维码内容
+  text = 'Z12345678'; // 二维码内容
   rotate = 0; // 元素的旋转角度（以弧度为单位）
   controllers; // 控制器的中间件实例
 
