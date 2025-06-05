@@ -1,15 +1,24 @@
-import { CanvasElement } from './elements';
+import BaseElement from './BaseElements';
 import { createSymbol } from '../utils/canvas';
+import ControllerMiddleWare from './controllerMiddleWare';
 
-export default class EwmElement extends CanvasElement {
+export default class EwmElement extends BaseElement {
   type = 'ewm'; // 元素类型：二维码
   id = createSymbol(); // 元素唯一标识符
+  ctx;
   width = 100; // 元素的宽度
   height = 100; // 元素的高度
   x = 10; // 元素的x坐标
   y = 10; // 元素的y坐标
   text = '12345678'; // 二维码内容
   rotate = 0; // 元素的旋转角度（以弧度为单位）
+  controllers; // 控制器的中间件实例
+
+  constructor(ctx: CanvasRenderingContext2D) {
+    super();
+    this.ctx = ctx
+    this.controllers = new ControllerMiddleWare(); // 初始化控制器中间件
+  }
 
   draw(ctx: CanvasRenderingContext2D): void {
     ctx.save();

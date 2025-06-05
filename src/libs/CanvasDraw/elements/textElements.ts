@@ -1,4 +1,4 @@
-import { CanvasElement } from './elements';
+import { CanvasElement } from './BaseElements';
 import { createSymbol } from '../utils/canvas';
 
 export default class TextElement extends CanvasElement {
