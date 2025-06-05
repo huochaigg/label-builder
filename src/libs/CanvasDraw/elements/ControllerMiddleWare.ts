@@ -1,4 +1,4 @@
-import BaseController from '../controller/baseController';
+import BaseController from '../controller/BaseController';
 
 export enum ControllerType {
   Scale = 'scale',

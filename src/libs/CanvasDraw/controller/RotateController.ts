@@ -3,7 +3,7 @@
  * @description 控制器，用于绘制缩放图标
  */
 
-import BaseController from './baseController'
+import BaseController from './BaseController'
 import BaseElement from '../elements/BaseElements';
 import ControllerMiddleWare from '../elements/ControllerMiddleWare';
 
