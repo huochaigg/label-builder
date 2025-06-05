@@ -5,25 +5,18 @@ export default function Home() {
 
   const navigate = useNavigate();
 
-  const handleClickToBatch = () => {
-    navigate('/select_pic/batch');
+  const handleClickToPrinter = () => {
+    navigate('/printer/index');
   }
 
   return (
     <div className={styles.homePage}>
       <div className='flex'>
-        <div className="card" onClick={handleClickToBatch}>
+        <div className="card" onClick={handleClickToPrinter}>
           <div className="card-icon">🖼️</div>
-          <h2>图片处理</h2>
-          <p>支持图片压缩、格式转换、大小调整、滤镜应用等多种图片处理功能</p>
-          <button className="btn">开始处理</button>
-        </div>
-        
-        <div className="card">
-          <div className="card-icon">📄</div>
-          <h2>文件处理</h2>
-          <p>提供PDF转换、文档合并、文件压缩、格式转换等多种文件处理功能</p>
-          <button className="btn">开始处理</button>
+          <h2>设置标签</h2>
+          <p>支持添加图形，二维码，条形码，文字等功能</p>
+          <button className="btn">开始设置</button>
         </div>
       </div>
     </div>

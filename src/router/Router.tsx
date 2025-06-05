@@ -7,11 +7,9 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 // 懒加载页面组件
 import Home from '../pages/Home';
-import SelectPicBatch from '../pages/SelectPicBatch';
+import Printer from '../pages/Printer';
 // const About = lazy(() => import('../pages/About'));
 const Setting = lazy(() => import('../pages/Setting'));
-const HistoryList = lazy(() => import('../pages/SelectPicBatch/History/List'));
-const HistoryDetail = lazy(() => import('../pages/SelectPicBatch/History/Detail'));
 
 const NotFound = () => {
   return (
@@ -37,31 +35,15 @@ export default function Router() {
       ),
     },
     {
-      path: '/select_pic',
+      path: '/printer',
       children: [
         {
           index: true,
           element: <Navigate to="batch" replace />,
         },
         {
-          path: 'batch',
-          element: <SelectPicBatch />,
-        },
-        {
-          path: 'history',
-          element: (
-            <Suspense fallback={<div>Loading...</div>}>
-              <HistoryList />
-            </Suspense>
-          ),
-        },
-        {
-          path: 'history/:id',
-          element: (
-            <Suspense fallback={<div>Loading...</div>}>
-              <HistoryDetail />
-            </Suspense>
-          ),
+          path: 'index',
+          element: <Printer />,
         },
       ]
     },
