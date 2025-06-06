@@ -30,6 +30,7 @@
       "@types/*": ["src/types/*"],
       "@electron/*": ["electron/*"],
       "@src/*": ["src/*"],
+      "@libs/*": ["src/libs/*"],
     }
   },
   "include": ["src", "electron"],

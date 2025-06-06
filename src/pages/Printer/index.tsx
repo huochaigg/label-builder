@@ -4,6 +4,7 @@ import styles from './style.module.less';
 
 const dpr = getDPR()
 
+
 export default function Setting() { 
 
   const [width, setWidth] = useState(500)
