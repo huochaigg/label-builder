@@ -1,5 +1,10 @@
 import BaseController from "../controller/BaseController";
 
+/***
+ * 控制器管理器
+ * 针对于Elements的控制器进行管理
+ */
+
 export default class ControllerManager {
   private controllers: Map<string, BaseController> = new Map();
 

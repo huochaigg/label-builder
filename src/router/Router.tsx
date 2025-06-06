@@ -7,7 +7,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 // 懒加载页面组件
 import Home from '../pages/Home';
-import Printer from '../pages/Printer';
+import CreatePrinterTag from '../pages/CreatePrinterTag';
 // const About = lazy(() => import('../pages/About'));
 const Setting = lazy(() => import('../pages/Setting'));
 
@@ -42,8 +42,8 @@ export default function Router() {
           element: <Navigate to="batch" replace />,
         },
         {
-          path: 'index',
-          element: <Printer />,
+          path: 'createPrinterTag',
+          element: <CreatePrinterTag />,
         },
       ]
     },
