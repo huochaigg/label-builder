@@ -1,28 +1,30 @@
 export enum CanvesType {
-  UPDATE_DATA = 'update_data',
-  UPDATE_WIDTH = 'update_width',
-  UPDATE_HEIGHT = 'update_height',
-  UPDATE_PANEL_TYPE = 'update_panel_type',
+  UPDATE_DATA = 'UPDATE_DATA',
+  UPDATE_WIDTH = 'UPDATE_WIDTH',
+  UPDATE_HEIGHT = 'UPDATE_HEIGHT',
+  UPDATE_PANEL_TYPE = 'UPDATE_PANEL_TYPE',
 }
 
 export type CanvesAction =
-| { type: CanvesType.UPDATE_DATA, payload: InitState } 
+| { type: CanvesType.UPDATE_DATA; payload: InitState } 
 | { type: CanvesType.UPDATE_WIDTH; payload: InitState['width'] } 
 | { type: CanvesType.UPDATE_HEIGHT; payload: InitState['height'] } 
 | { type: CanvesType.UPDATE_PANEL_TYPE; payload: InitState['panelType'] }; 
 
 export enum PanelType {
-  文本控制板 = 'text_panel',
-  图片控制板 = 'image_panel',
-  条形码控制板 = 'barcode_panel',
-  二维码控制板 = 'qrcode_panel',
-  图形控制板 = 'shape_panel',
-  线条控制板 = 'line_panel',
-  其他控制板 = 'other_panel',
+  文本控制板 = 'TEXT_PANEL',
+  图片控制板 = 'IMAGE_PANEL',
+  条形码控制板 = 'BARCODE_PANEL',
+  二维码控制板 = 'QRCODE_PANEL',
+  图形控制板 = 'SHAPE_PANEL',
+  线条控制板 = 'LINE_PANEL',
+  其他控制板 = 'OTHER_PANEL',
 }
 
 export interface InitState {
+  /** 要设置的标签（tag）宽度 */ 
   width: number;
+  /** 要设置的标签高度 */ 
   height: number;
   panelType: PanelType | undefined;
 }
@@ -42,12 +44,12 @@ export const canvasReducer = (state: InitState, actions: CanvesAction): InitStat
     case CanvesType.UPDATE_WIDTH:
       return {
         ...state,
-        width: actions.payload, // 示例：增加宽度
+        width: actions.payload, // 设置宽度
       };
     case CanvesType.UPDATE_HEIGHT:
       return {
         ...state,
-        height: actions.payload, // 示例：增加高度
+        height: actions.payload, // 设置高度
       };
     case CanvesType.UPDATE_PANEL_TYPE:
       return {

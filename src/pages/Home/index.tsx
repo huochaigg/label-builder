@@ -6,7 +6,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   const handleClickToPrinter = () => {
-    navigate('/printer/index');
+    navigate('/printer/createPrinterTag');
   }
 
   return (

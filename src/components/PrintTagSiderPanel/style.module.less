@@ -1,0 +1,41 @@
+.printTagSiderPanel{
+  width: 100%;
+  
+  @text-color: #8e8e8e;
+
+  :global{
+    .panel_list{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .panel_item{
+      margin-bottom: 20px;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 120px;
+      height: 120px;
+      border-radius: 16px;
+      border: 2px solid @text-color;
+      cursor: pointer;
+
+      .name{
+        font-size: 18px;
+        color: @text-color;
+      }
+
+      &>svg{
+        width: 55px;
+        height: 55px;
+        fill: @text-color;
+      }
+
+      &::nth-child(2n){
+        margin-right: 0;
+      }
+    }
+  }
+}
