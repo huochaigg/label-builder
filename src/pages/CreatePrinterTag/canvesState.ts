@@ -1,3 +1,5 @@
+import { PanelType } from '@libs/CanvasDraw';
+
 export enum CanvesType {
   UPDATE_DATA = 'UPDATE_DATA',
   UPDATE_WIDTH = 'UPDATE_WIDTH',
@@ -10,16 +12,6 @@ export type CanvesAction =
 | { type: CanvesType.UPDATE_WIDTH; payload: InitState['width'] } 
 | { type: CanvesType.UPDATE_HEIGHT; payload: InitState['height'] } 
 | { type: CanvesType.UPDATE_PANEL_TYPE; payload: InitState['panelType'] }; 
-
-export enum PanelType {
-  文本控制板 = 'TEXT_PANEL',
-  图片控制板 = 'IMAGE_PANEL',
-  条形码控制板 = 'BARCODE_PANEL',
-  二维码控制板 = 'QRCODE_PANEL',
-  图形控制板 = 'SHAPE_PANEL',
-  线条控制板 = 'LINE_PANEL',
-  其他控制板 = 'OTHER_PANEL',
-}
 
 export interface InitState {
   /** 要设置的标签（tag）宽度 */ 

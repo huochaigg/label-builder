@@ -1,12 +1,13 @@
 import utils from './utils'; 
 import ControllerMediator from './core/mediator/ControllerMediator';
+export * from './types';
 
 export { 
   utils,
-  ControllerMediator
+  ControllerMediator,
 };
 
 export default {
   utils,
-  ControllerMediator
+  ControllerMediator,
 };

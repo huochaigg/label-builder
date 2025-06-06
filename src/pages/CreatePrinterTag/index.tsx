@@ -4,6 +4,7 @@ import styles from './style.module.less'
 import { canvasReducer, initCanvasState } from './canvesState'
 import PrintTagSiderPanel from '@components/PrintTagSiderPanel';
 import PrintTagElemetnPanel from '@components/PrintTagElementPanel';
+import { ElementType } from '@libs/CanvasDraw'
 
 export default function CreatePrinterTag() {
 
@@ -17,10 +18,11 @@ export default function CreatePrinterTag() {
     const container = canvasContainerRef.current;
     const proportion = state.height / state.width
 
-    const resizeObserver = new ResizeObserver(() => {
-      if (canvas && container) {
+    const resizeObserver = new ResizeObserver((entries) => {
+      const entry = entries[0]
+      if (canvas && container && entry) {
         const dpr = getDPR();
-        const containerWidth = container.offsetWidth;
+        const containerWidth = entry.contentRect.width;
         const width = containerWidth;
         const height = containerWidth * proportion
 
@@ -45,6 +47,12 @@ export default function CreatePrinterTag() {
     };
   }, [state.width, state.height])
 
+  const triggerCreatePanel = async (type: ElementType) => {
+    return new Promise((resolve) => {
+      console.log(type)
+      resolve(); 
+    }) as Promise<void>;
+  };
 
   return (
     <div className={styles.createPrinterTag}>
@@ -53,7 +61,9 @@ export default function CreatePrinterTag() {
         <PrintTagElemetnPanel />
       </div>
       <div className='sider'>
-        <PrintTagSiderPanel />
+        <PrintTagSiderPanel
+          triggerCreatePanel={triggerCreatePanel}
+        />
       </div>
     </div>
   );
