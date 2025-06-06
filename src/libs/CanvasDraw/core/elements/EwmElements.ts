@@ -1,6 +1,6 @@
 import BaseElement from './BaseElements';
-import { createSymbol } from '../utils/canvas';
-import ControllerMiddleWare from './ControllerMiddleWare';
+import { createSymbol } from '../../utils/canvas';
+import ControllerMiddleWare from '../mediator/ControllerMediator';
 
 export default class EwmElement extends BaseElement {
   type = 'ewm'; // 元素类型：二维码

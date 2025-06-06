@@ -1,6 +1,6 @@
 import BaseElements from './BaseElements';
-import { createSymbol } from '../utils/canvas';
-import ControllerMiddleWare from './ControllerMiddleWare';
+import { createSymbol } from '../../utils/canvas';
+import ControllerMiddleWare from '../mediator/ControllerMediator';
 
 export default class TextElement extends BaseElements {
   type = 'text'; // 元素类型

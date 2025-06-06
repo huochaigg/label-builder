@@ -24,6 +24,9 @@ export default class ControllerMiddleWare {
   }
 
   clearController(): void {
+    this.controllers.forEach(controller => {
+      controller.clearController(); // 清除控制器图标
+    });
     this.controllers.clear();
   }
 

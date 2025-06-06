@@ -1,4 +1,4 @@
-import ControllerMiddleWare from './ControllerMiddleWare';
+import ControllerMiddleWare from '../mediator/ControllerMediator';
 
 export default abstract class BaseElement {
   abstract type: string; // 元素类型
@@ -16,9 +16,3 @@ export default abstract class BaseElement {
   abstract controllers: ControllerMiddleWare; // 控制器的WeakMap，用于存储控制器实例
 }
 
-// WeakMap 有哪些方法? 
-// WeakMap 的方法有：
-// 1. set(key, value): 将键值对添加到 WeakMap 中。
-// 2. get(key): 根据键获取对应的值。
-// 3. has(key): 检查 WeakMap 中是否存在指定的键。
-// 4. delete(key): 删除 WeakMap 中指定的键及其对应的值。
