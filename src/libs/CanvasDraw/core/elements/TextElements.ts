@@ -1,6 +1,6 @@
 import BaseElements from './BaseElements';
 import { createSymbol } from '../../utils/constants';
-import { ElementType } from '../../types';
+import { ElementType, DrawElement } from '../../types';
 export default class TextElement extends BaseElements {
   type = ElementType.文本; // 元素类型
   id = createSymbol(); // 元素唯一标识符
@@ -11,12 +11,16 @@ export default class TextElement extends BaseElements {
   text = '请输入文本'; // 文本内容
   rotate = 0; // 元素的旋转角度（以弧度为单位）
 
-  draw(ctx: CanvasRenderingContext2D): void {
-    ctx.save();
-    ctx.font = '16px Arial';
-    ctx.fillStyle = '#000';
-    ctx.fillText(this.text, this.x, this.y + 16); // 绘制文本，y坐标加上字体高度的一半
-    ctx.restore();
+  draw(drawJSON?: DrawElement): void {
+    if (!this.ctx) {
+      console.error('CanvasRenderingContext2D 未初始化');
+      return;
+    }
+    this.ctx.save();
+    this.ctx.font = '16px Arial';
+    this.ctx.fillStyle = '#000';
+    this.ctx.fillText(this.text, this.x, this.y + 16); // 绘制文本，y坐标加上字体高度的一半
+    this.ctx.restore();
   }
   
   isHit(x: number, y: number): boolean {

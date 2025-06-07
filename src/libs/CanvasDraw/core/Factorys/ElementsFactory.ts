@@ -2,10 +2,10 @@ import BaseElements from "../elements/BaseElements";
 import EwmElement from "../elements/EwmElements";
 import TextElement from "../elements/TextElements";
 import GraphElements from "../elements/GraphElements";
-import { ElementType, Element } from "../../types";
+import { ElementType, DrawElement } from "../../types";
 
 export default class ElementsFactory {
-  static createElement(type: string, ctx: CanvasRenderingContext2D, drawJSON?: Element): BaseElements {
+  static createElement(type: string, ctx: CanvasRenderingContext2D, drawJSON?: DrawElement): BaseElements {
     switch (type) {
       case ElementType.文本:
         return new TextElement(ctx, drawJSON);

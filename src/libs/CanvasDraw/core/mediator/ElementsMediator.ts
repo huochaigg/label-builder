@@ -2,12 +2,12 @@
  * 针对于Elements的中介者
  * 用于协调不同的元素之间的交互
  */
-import { Element, ElementType, CanvasDrawJSON } from '../../types';
+import { DrawElement, ElementType, CanvasDrawJSON } from '../../types';
 import ElementsFactory from '../Factorys/ElementsFactory';
 
 
 export default class ElementsMediator {
-  private elements: Map<string, Element> = new Map();
+  private elements: Map<string, DrawElement> = new Map();
 
   private ctx: CanvasRenderingContext2D;
 
@@ -16,14 +16,14 @@ export default class ElementsMediator {
   }
 
   /** 新增元素添加到elements */
-  crateElement(type: ElementType, ElementJSON?: Element): void {
+  crateElement(type: ElementType, ElementJSON?: DrawElement): void {
     const element = ElementsFactory.createElement(type, this.ctx, ElementJSON);
     element.setMiddleWare(this); // 设置中间件
     this.elements.set(element.id, element);
   }
 
   /** 获取元素 */
-  getElement(id: string): Element | undefined {
+  getElement(id: string): DrawElement | undefined {
     return this.elements.get(id);
   }
 
@@ -37,7 +37,7 @@ export default class ElementsMediator {
   }
 
   /** 更新元素 */
-  updateElement(id: string, newElement: Element): void {
+  updateElement(id: string, newElement: DrawElement): void {
     if (!this.elements.has(id)) {
       console.warn(`Element with id ${id} does not exist.`);
       return;
@@ -46,7 +46,7 @@ export default class ElementsMediator {
   }
 
   /** 获取所有元素 */
-  getAllElements(): Element[] {
+  getAllElements(): DrawElement[] {
     return Array.from(this.elements.values());
   }
   

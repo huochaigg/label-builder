@@ -25,7 +25,7 @@ export enum ControllerType {
   拉伸 = 'STRETCH',
 }  
 
-export interface Element {
+export interface DrawElement {
   /** 元素唯一标识符 */
   id: string; 
   /** 元素类型 */
@@ -50,7 +50,7 @@ export interface CanvasDrawJSON {
   /** 标签的高度 */
   height: number;
   /** 元素列表 */
-  elements: Element[];
+  elements: DrawElement[];
 }
 
 export interface CanvasDrawOptions {

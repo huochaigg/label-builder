@@ -1,6 +1,6 @@
 import BaseElement from './BaseElements';
 import { createSymbol } from '../../utils/constants';
-import { ElementType } from '../../types';
+import { ElementType, DrawElement } from '../../types';
 
 export default class EwmElement extends BaseElement {
   type = ElementType.二维码; // 元素类型：二维码
@@ -12,13 +12,17 @@ export default class EwmElement extends BaseElement {
   text = 'Z12345678'; // 二维码内容
   rotate = 0; // 元素的旋转角度（以弧度为单位）
 
-  draw(ctx: CanvasRenderingContext2D): void {
-    ctx.save();
-    ctx.fillStyle = '#fff'; // 设置二维码背景色
-    ctx.fillRect(this.x, this.y, this.width, this.height); // 绘制背景矩形
-    ctx.fillStyle = '#000'; // 设置二维码颜色
+  draw(drawJSON?: DrawElement): void {
+    if (!this.ctx) {
+      console.error('CanvasRenderingContext2D 未初始化');
+      return;
+    }
+    this.ctx.save();
+    this.ctx.fillStyle = '#fff'; // 设置二维码背景色
+    this.ctx.fillRect(this.x, this.y, this.width, this.height); // 绘制背景矩形
+    this.ctx.fillStyle = '#000'; // 设置二维码颜色
 
-    ctx.restore();
+    this.ctx.restore();
   }
   
   isHit(x: number, y: number): boolean {
