@@ -1,13 +1,13 @@
 import utils from './utils'; 
-import ControllerMediator from './core/mediator/ControllerMediator';
+import CanvasDrawManager from './core/manager/CanvasDrawManager';
 export * from './types';
 
 export { 
   utils,
-  ControllerMediator,
+  CanvasDrawManager,
 };
 
 export default {
   utils,
-  ControllerMediator,
+  CanvasDrawManager,
 };

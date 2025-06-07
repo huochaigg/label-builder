@@ -11,16 +11,23 @@
     .main{
       flex: 1;
       position: relative;
-    }
-
-    .canvas{
       background: #ffffff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
+
+      .canvas_container{
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .canvas{
+        border: 5px dashed #ccc;
+        width: 500px;
+      }
     }
+
 
     .sider{
       width: 300px;
