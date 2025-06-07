@@ -42,6 +42,17 @@ export interface Element {
   rotation?: number; // 元素的旋转角度
 }
 
+export interface CanvasDrawJSON {
+  /** 画布的上下文对象 */
+  ctx: CanvasRenderingContext2D;
+  /** 标签的宽度 */
+  width: number;
+  /** 标签的高度 */
+  height: number;
+  /** 元素列表 */
+  elements: Element[];
+}
+
 export interface CanvasDrawOptions {
   /** 画布的上下文对象 */
   ctx: CanvasRenderingContext2D;

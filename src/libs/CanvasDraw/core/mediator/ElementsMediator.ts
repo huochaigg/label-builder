@@ -2,7 +2,7 @@
  * 针对于Elements的中介者
  * 用于协调不同的元素之间的交互
  */
-import { Element, ElementType } from '../../types';
+import { Element, ElementType, CanvasDrawJSON } from '../../types';
 import ElementsFactory from '../Factorys/ElementsFactory';
 
 
@@ -15,14 +15,10 @@ export default class ElementsMediator {
     this.ctx = ctx;
   }
 
-  /** 创建元素 */
-  crateElement(type: ElementType): Element {
-    return ElementsFactory.createElement(type, this.ctx);
-  }
-
-  /** 添加原素 */
-  addElement(type: ElementType): void {
-    const element = this.crateElement(type);
+  /** 新增元素添加到elements */
+  crateElement(type: ElementType, ElementJSON?: Element): void {
+    const element = ElementsFactory.createElement(type, this.ctx, ElementJSON);
+    element.setMiddleWare(this); // 设置中间件
     this.elements.set(element.id, element);
   }
 
@@ -68,5 +64,21 @@ export default class ElementsMediator {
   hasElement(id: string): boolean {
     return this.elements.has(id);
   }
+
+  /** 根据drawJSON遍历并添加对应Element */
+  drawElements(drawElementsJSON: CanvasDrawJSON['elements']): void {
+    if (!this.ctx) {
+      console.error('CanvasRenderingContext2D 未初始化');
+      return;
+    }
+
+    // 清空当前画布
+    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+
+    // 遍历元素并绘制
+    drawElementsJSON.forEach(elementJSON => {
+      this.crateElement(elementJSON.type, elementJSON);
+    });
+  } 
 
 }

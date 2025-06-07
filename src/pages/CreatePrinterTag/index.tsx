@@ -13,15 +13,9 @@ export default function CreatePrinterTag() {
   const [state, dispatch] = useReducer(canvasReducer, initCanvasState)
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (canvas) {
-      const ctx = CanvasDrawManager.initializeCanvas(canvas, state.width, state.height);
-      if (!ctx) {
-        console.error('无法获取 CanvasRenderingContext2D，请检查 canvas 元素是否正确初始化');
-        return;
-      }
-
-      // 创建新的 CanvasDrawManager 实例
+    // 创建新的 CanvasDrawManager 实例
+    const ctx = canvasRef.current?.getContext('2d');
+    if (ctx) {
       canvasDrawManager.current = new CanvasDrawManager({
         ctx: ctx,
         width: state.width,
