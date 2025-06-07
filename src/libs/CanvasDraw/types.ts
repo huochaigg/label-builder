@@ -17,3 +17,36 @@ export enum ElementType {
   线条 = 'LINE',
   其他 = 'OTHER',
 }
+
+export enum ControllerType {
+  缩放 = 'SCALE',
+  旋转 = 'ROTATE',
+  删除 = 'DELETE',
+  拉伸 = 'STRETCH',
+}  
+
+export interface Element {
+  /** 元素唯一标识符 */
+  id: string; 
+  /** 元素类型 */
+  type: ElementType;
+  /** 元素在画布上的x坐标 */
+  x: number;
+  /** 元素在画布上的y坐标 */
+  y: number;
+  /** 元素的宽度 */
+  width: number; 
+  /** 元素的高度 */
+  height: number;
+  /** 元素的旋转角度 */
+  rotation?: number; // 元素的旋转角度
+}
+
+export interface CanvasDrawOptions {
+  /** 画布的上下文对象 */
+  ctx: CanvasRenderingContext2D;
+  /** 标签的宽度 */
+  width: number;
+  /** 标签的高度 */
+  height: number;
+}

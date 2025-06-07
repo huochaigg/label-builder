@@ -2,8 +2,8 @@ import BaseElement from './BaseElements';
 import { createSymbol } from '../../utils/constants';
 import { ElementType } from '../../types';
 
-export default class EwmElement extends BaseElement {
-  type = ElementType.二维码; // 元素类型：二维码
+export default class GraphElements extends BaseElement {
+  type = ElementType.图形; // 元素类型：图片
   id = createSymbol(); // 元素唯一标识符
   width = 100; // 元素的宽度
   height = 100; // 元素的高度

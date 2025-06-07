@@ -28,11 +28,3 @@ export const correctResolution = (canvas: HTMLCanvasElement, width: number, heig
     ctx.scale(dpr, dpr);
   }
 }
-
-/**
- * 创建唯一的符号
- * @returns {number} 唯一的符号
- **/
-export const createSymbol = () => {
-  return Math.random().toString(36).slice(2);
-}

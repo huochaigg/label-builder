@@ -1,7 +1,9 @@
 import * as canvas from './canvas';
+import * as constants from './constants';
 
 const utils = {
   ...canvas,
+  ...constants,
 };
 
 export { utils };        // 命名导出

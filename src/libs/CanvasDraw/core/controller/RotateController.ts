@@ -5,7 +5,6 @@
 
 import BaseController from './BaseController'
 import BaseElement from '../elements/BaseElements';
-import ControllerMiddleWare from '../mediator/ControllerMediator';
 
 import RotateIcon from '../../assets/images/rotate.png';
 import RotateDarkIcon from '../../assets/images/rotate_dark.png';
@@ -15,8 +14,6 @@ export default class RotateController extends BaseController {
   iconSize = 20;
   x = 0;
   y = 0;
-  middleWare: ControllerMiddleWare | null = null;
-
 
   drawIcon(): void {
     if (!this.ctx) return;

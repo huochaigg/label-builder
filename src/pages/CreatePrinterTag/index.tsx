@@ -50,6 +50,7 @@ export default function CreatePrinterTag() {
   const triggerCreatePanel = async (type: ElementType) => {
     return new Promise((resolve) => {
       console.log(type)
+      // TODO 给canvas添加对应elements
       resolve(); 
     }) as Promise<void>;
   };

@@ -1,15 +1,14 @@
-import BaseController from '../controller/BaseController';
+/***
+ * ControllerMiddleWare.ts
+ * @description 控制器中间件
+ * 旋转，缩放，删除，拉伸等控制器的管理和绘制
+ */
 
-export enum ControllerType {
-  Scale = 'scale',
-  Rotate = 'rotate',
-  Delete = 'delete',
-  Stretch = 'stretch',
-}  
+import BaseController from '../controller/BaseController';
+import { ControllerType } from '../../types';
 
 export type ControllerMap = Map<ControllerType, BaseController>;
 
-// 一个控制器中间件，用于管理所有的控制器
 export default class ControllerMiddleWare {
   private controllers: ControllerMap = new Map();
 
