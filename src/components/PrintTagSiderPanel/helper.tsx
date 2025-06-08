@@ -4,7 +4,7 @@ export interface PrintTagSiderPanelProps {
   /** 打印方向 */
   direction?: 'horizontal' | 'vertical';
   /** 点击面板触发创建element */ 
-  triggerCreatePanel: (type: ElementType) => Promise<void>;
+  triggerCreatePanel: (type: ElementType) => void;
 }
 
 export const panelList = [

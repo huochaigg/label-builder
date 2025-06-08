@@ -1,6 +1,6 @@
 import BaseElements from './BaseElements';
 import { createSymbol } from '../../utils/constants';
-import { ElementType, DrawElement } from '../../types';
+import { ElementType, DrawElementPartial } from '../../types';
 export default class TextElement extends BaseElements {
   type = ElementType.文本; // 元素类型
   id = createSymbol(); // 元素唯一标识符
@@ -11,7 +11,7 @@ export default class TextElement extends BaseElements {
   text = '请输入文本'; // 文本内容
   rotate = 0; // 元素的旋转角度（以弧度为单位）
 
-  draw(drawJSON?: DrawElement): void {
+  draw(drawJSON?: DrawElementPartial): void {
     if (!this.ctx) {
       console.error('CanvasRenderingContext2D 未初始化');
       return;
@@ -23,13 +23,4 @@ export default class TextElement extends BaseElements {
     this.ctx.restore();
   }
   
-  isHit(x: number, y: number): boolean {
-    // 检测鼠标是否点击在文本元素上
-    return (
-      x >= this.x &&
-      x <= this.x + this.width &&
-      y >= this.y - this.height && // 考虑到文本的高度
-      y <= this.y
-    );
-  }
 }

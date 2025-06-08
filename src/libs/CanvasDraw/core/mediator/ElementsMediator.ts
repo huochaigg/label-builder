@@ -2,7 +2,7 @@
  * 针对于Elements的中介者
  * 用于协调不同的元素之间的交互
  */
-import { DrawElement, ElementType, CanvasDrawJSON } from '../../types';
+import { DrawElement, ElementType, DrawElementPartial } from '../../types';
 import ElementsFactory from '../Factorys/ElementsFactory';
 
 
@@ -16,9 +16,9 @@ export default class ElementsMediator {
   }
 
   /** 新增元素添加到elements */
-  crateElement(type: ElementType, ElementJSON?: DrawElement): void {
+  crateElement(type: ElementType, ElementJSON?: DrawElementPartial): void {
     const element = ElementsFactory.createElement(type, this.ctx, ElementJSON);
-    element.setMiddleWare(this); // 设置中间件
+    element.setMiddleWare(this); // 设置中介者
     this.elements.set(element.id, element);
   }
 
@@ -66,7 +66,7 @@ export default class ElementsMediator {
   }
 
   /** 根据drawJSON遍历并添加对应Element */
-  drawElements(drawElementsJSON: CanvasDrawJSON['elements']): void {
+  drawElements(drawElementsJSON: DrawElementPartial[]): void {
     if (!this.ctx) {
       console.error('CanvasRenderingContext2D 未初始化');
       return;

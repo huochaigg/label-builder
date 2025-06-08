@@ -2,7 +2,7 @@
  * 一个总的管理器
  */
 import ElementsMediator from '../mediator/ElementsMediator';
-import { CanvasDrawOptions, CanvasDrawJSON } from '../../types';
+import { CanvasDrawOptions, CanvasDrawJSON, DrawElementPartial, ElementType } from '../../types';
 import utils from '../../utils';
 
 export default class CanvasDrawManager {
@@ -36,34 +36,37 @@ export default class CanvasDrawManager {
 
   /** 获取当前canvas的base64对象 */
   getDrawBase64(): string {
-    if (!this.ctx) {
-      console.error('CanvasRenderingContext2D 未初始化');
-      return '';
-    }
     return utils.getCanvasBase64(
-      this.ctx, 
+      this.ctx as CanvasRenderingContext2D, 
       this.options.width, 
       this.options.height
-    ) || '';
+    );
   }
 
-  /** 根据DrawJSON对象默认绘制canvas */
-  drawFromJSON(json: CanvasDrawJSON): void {
-    if (!json || !json.elements || json.elements.length === 0) {
-      console.warn('没有可绘制的元素');
-      return;
-    }
+  /** 
+   * 根据DrawJSON对象默认绘制canvas
+   * @param drawJson - CanvasDrawJSON 对象
+   * @throws {Error} 如果元素JSON对象不包含elements属性，则抛出错误
+   */
+  drawFromJSON(drawJson: CanvasDrawJSON): void {
+    this.elementsMediator?.drawElements(drawJson.elements);
+  } 
 
-    if (!this.ctx) {
-      console.error('CanvasRenderingContext2D 未初始化');
-      return;
-    }
+  /** 
+   * 根据DrawJSON某个对象来单独绘制
+   * @param elementJSON - DrawElementPartial 对象
+   * @throws {Error} 如果元素JSON对象不包含type属性，则抛出错误
+   */
+  drawFromJSONElement(elementJSON: DrawElementPartial): void {
+    this.elementsMediator?.drawElements([elementJSON]);
+  }
 
-    // 清空当前画布
-    this.ctx.clearRect(0, 0, this.options.width, this.options.height);
-
-    // 遍历元素并绘制
-    this.elementsMediator?.drawElements(json.elements);
+  /** 
+   * 创建一个新的元素
+   * @param type - 元素类型
+   */
+  createElement(type: ElementType): void {
+    this.elementsMediator?.crateElement(type);
   } 
 
   /** 

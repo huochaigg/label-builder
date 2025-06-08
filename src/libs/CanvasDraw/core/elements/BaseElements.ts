@@ -1,6 +1,6 @@
 import ControllerMediator from '../mediator/ControllerMediator';
 import ElementsMediator from '../mediator/ElementsMediator';
-import { ElementType, DrawElement } from '../../types';
+import { ElementType, DrawElementPartial } from '../../types';
 
 
 export default abstract class BaseElement {
@@ -12,14 +12,13 @@ export default abstract class BaseElement {
   abstract height: number; // 元素的高度
   abstract rotate: number; // 元素的旋转角度（以弧度为单位）
 
-  abstract draw(drawJSON?: DrawElement): void; // 绘制元素的方法
-  abstract isHit(x: number, y: number): boolean; // 检测鼠标是否点击在元素上
+  abstract draw(drawJSON?: DrawElementPartial): void; // 绘制元素的方法
 
   ctx: CanvasRenderingContext2D | null; // 画布的上下文对象
   controller: ControllerMediator; // 用于存储控制器实例
   middleWare: ElementsMediator | null = null; // 控制器中间件实例
 
-  constructor(ctx: CanvasRenderingContext2D, drawJSON?: DrawElement) {
+  constructor(ctx: CanvasRenderingContext2D, drawJSON?: DrawElementPartial) {
     this.ctx = ctx; // 初始化画布的上下文对象
     this.draw(drawJSON)
     this.controller = new ControllerMediator(); // 初始化控制器中间件

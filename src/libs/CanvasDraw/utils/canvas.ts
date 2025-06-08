@@ -39,10 +39,10 @@ export const correctResolution = (canvas: HTMLCanvasElement, width: number, heig
  * 将画布内容转换为base64编码的PNG格式字符串。
  * 如果获取失败，则返回null。
  */
-export const getCanvasBase64 = (ctx: CanvasRenderingContext2D, width: number, height: number): string | null => {
+export const getCanvasBase64 = (ctx: CanvasRenderingContext2D, width: number, height: number): string => {
   if (!ctx) {
     console.error('Canvas context is not initialized.');
-    return null;
+    return '';
   }
   const offscreenCanvas = document.createElement('canvas');
   offscreenCanvas.width = width;
@@ -50,8 +50,8 @@ export const getCanvasBase64 = (ctx: CanvasRenderingContext2D, width: number, he
   const offscreenCtx = offscreenCanvas.getContext('2d');
   if (!offscreenCtx) {
     console.error('Failed to get 2D context from the offscreen canvas.');
-    return null;
+    return '';
   }
   offscreenCtx.drawImage(ctx.canvas, 0, 0, width, height);
-  return offscreenCanvas.toDataURL('image/png'); // 从离屏 canvas 获取 Base64
+  return offscreenCanvas.toDataURL('image/png') || ''; // 从离屏 canvas 获取 Base64
 }

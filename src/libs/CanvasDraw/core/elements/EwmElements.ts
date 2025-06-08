@@ -1,6 +1,6 @@
 import BaseElement from './BaseElements';
 import { createSymbol } from '../../utils/constants';
-import { ElementType, DrawElement } from '../../types';
+import { ElementType, DrawElementPartial } from '../../types';
 
 export default class EwmElement extends BaseElement {
   type = ElementType.二维码; // 元素类型：二维码
@@ -12,7 +12,7 @@ export default class EwmElement extends BaseElement {
   text = 'Z12345678'; // 二维码内容
   rotate = 0; // 元素的旋转角度（以弧度为单位）
 
-  draw(drawJSON?: DrawElement): void {
+  draw(drawJSON?: DrawElementPartial): void {
     if (!this.ctx) {
       console.error('CanvasRenderingContext2D 未初始化');
       return;
@@ -24,14 +24,5 @@ export default class EwmElement extends BaseElement {
 
     this.ctx.restore();
   }
-  
-  isHit(x: number, y: number): boolean {
-    // 检测鼠标是否点击在二维码元素上
-    return (
-      x >= this.x &&
-      x <= this.x + this.width &&
-      y >= this.y - this.height && 
-      y <= this.y
-    );
-  }
+
 }

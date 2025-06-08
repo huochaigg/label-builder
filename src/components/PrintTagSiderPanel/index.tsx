@@ -9,8 +9,8 @@ import styles from './style.module.less'
 
 export default function PrintTagSiderPanel(props: PrintTagSiderPanelProps) {
 
-  const handleClickItemPanel = async (type: ElementType) => {
-    await props.triggerCreatePanel(type)
+  const handleClickItemPanel = (type: ElementType) => {
+    props.triggerCreatePanel(type)
   }
 
   return <section className={styles.printTagSiderPanel}>

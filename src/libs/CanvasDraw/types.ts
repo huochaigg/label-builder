@@ -42,6 +42,19 @@ export interface DrawElement {
   rotation?: number; // 元素的旋转角度
 }
 
+/** 
+ * 绘制时可以使用
+ * 只有 type 属性是必填的
+ * 其他属性都是可选的
+ * 如果需要使用其他属性，请在使用时手动添加
+ * 
+ * 例如：
+ * const element: DrawElementPartial = { type: ElementType.文本, x: 10, y: 20, width: 100, height: 50 }; 
+ **/ 
+export type DrawElementPartial = Partial<Omit<DrawElement, 'type'>> & { type: ElementType };
+
+
+/** CanvasDrawJSON 接口定义了画布已绘制的 JSON 对象结构 */
 export interface CanvasDrawJSON {
   /** 画布的上下文对象 */
   ctx: CanvasRenderingContext2D;
