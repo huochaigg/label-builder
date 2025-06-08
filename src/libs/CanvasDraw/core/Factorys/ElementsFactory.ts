@@ -2,14 +2,13 @@
  * 创建元素实例
  */
 
-import BaseElements from "../elements/BaseElements";
 import EwmElement from "../elements/EwmElements";
 import TextElement from "../elements/TextElements";
 import GraphElements from "../elements/GraphElements";
-import { ElementType, DrawElementPartial } from "../../types";
+import { ElementType, DrawElementPartial, DrawElement } from "../../types";
 
 export default class ElementsFactory {
-  static createElement(type: string, ctx: CanvasRenderingContext2D, drawJSON?: DrawElementPartial): BaseElements {
+  static createElement(type: string, ctx: CanvasRenderingContext2D, drawJSON?: DrawElementPartial): DrawElement {
     switch (type) {
       case ElementType.文本:
         return new TextElement(ctx, drawJSON);

@@ -2,7 +2,7 @@ import BaseElements from './BaseElements';
 import { createSymbol } from '../../utils/constants';
 import { ElementType, DrawElementPartial } from '../../types';
 export default class TextElement extends BaseElements {
-  type = ElementType.文本; // 元素类型
+  type: ElementType.文本 = ElementType.文本; // 元素类型
   id = createSymbol(); // 元素唯一标识符
   x = 0; // 元素的x坐标
   y = 0; // 元素的y坐标

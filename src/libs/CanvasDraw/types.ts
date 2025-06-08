@@ -1,3 +1,9 @@
+import TextElement from './core/elements/TextElements';
+import EwmElement from './core/elements/EwmElements';
+import ImageElement from './core/elements/ImageElements';
+import GraphElements from './core/elements/GraphElements';
+
+
 export enum PanelType {
   文本控制板 = 'TEXT_PANEL',
   图片控制板 = 'IMAGE_PANEL',
@@ -25,22 +31,12 @@ export enum ControllerType {
   拉伸 = 'STRETCH',
 }  
 
-export interface DrawElement {
-  /** 元素唯一标识符 */
-  id: string; 
-  /** 元素类型 */
-  type: ElementType;
-  /** 元素在画布上的x坐标 */
-  x: number;
-  /** 元素在画布上的y坐标 */
-  y: number;
-  /** 元素的宽度 */
-  width: number; 
-  /** 元素的高度 */
-  height: number;
-  /** 元素的旋转角度 */
-  rotation?: number; // 元素的旋转角度
-}
+/** 绘制的Elements类型 */ 
+export type DrawElement = 
+  | TextElement 
+  | EwmElement 
+  | ImageElement
+  | GraphElements;
 
 /** 
  * 绘制时可以使用

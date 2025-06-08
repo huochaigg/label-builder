@@ -27,7 +27,5 @@ export default abstract class BaseElement {
   setMiddleWare(middleWare: ElementsMediator): void {
     this.middleWare = middleWare; // 设置控制器中间件
   }
-
-
 }
 
