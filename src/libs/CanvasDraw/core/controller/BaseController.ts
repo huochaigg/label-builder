@@ -1,14 +1,14 @@
 import ControllerMiddleWare from "../mediator/ControllerMediator";
-import BaseElement from "../elements/BaseElements";
+import { DrawElement } from "../../types";
 
 export default abstract class BaseController {
-  element: BaseElement | null = null; // 画布元素
+  element: DrawElement | null = null; // 画布元素
   iconSize = 20; // 图标大小
   x = 0; // 图标左定位
   y = 0; // 图标上定位
   middleWare: ControllerMiddleWare | null = null; // 控制器中间件实例
 
-  constructor(element: BaseElement) {
+  constructor(element: DrawElement) {
     this.element = element;
   }
 

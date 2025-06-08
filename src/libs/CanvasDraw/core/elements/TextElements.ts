@@ -1,25 +1,52 @@
-import BaseElements from './BaseElements';
-import { createSymbol } from '../../utils/constants';
+import BaseElements, { BaseElementOptions } from './BaseElements';
 import { ElementType, DrawElementPartial } from '../../types';
-export default class TextElement extends BaseElements {
-  type: ElementType.文本 = ElementType.文本; // 元素类型
-  id = createSymbol(); // 元素唯一标识符
-  x = 0; // 元素的x坐标
-  y = 0; // 元素的y坐标
-  width = 100; // 元素的宽度
-  height = 30; // 元素的高度
-  text = '请输入文本'; // 文本内容
-  rotate = 0; // 元素的旋转角度（以弧度为单位）
 
-  draw(drawJSON?: DrawElementPartial): void {
+export interface TextElementOptions extends BaseElementOptions {
+  /** 元素类型 */
+  type: ElementType.文本;
+  /** 文本内容 */
+  text: string; 
+  /** 字体大小 */
+  fontSize: number;
+  /** 字体类型 */
+  fontFamily: string;
+  /** 字体颜色 */
+  fontColor: string;
+  /** 文本对齐方式 */
+  textAlign: CanvasTextAlign;
+  /** 文本垂直对齐方式 */
+  textBaseline: CanvasTextBaseline;
+  /** 文本行高 */
+  lineHeight: number;
+  /** 文本内容宽度，超出隐藏或换行 */
+  textWidth: number;
+}
+export default class TextElement extends BaseElements<TextElementOptions> {
+  constructor(ctx: CanvasRenderingContext2D, drawJSON?: DrawElementPartial) {
+    super(ctx, drawJSON);
+    this.options = {
+      ...this.options,
+      type: ElementType.文本, // 元素类型
+      text: '请输入文本内容', // 文本内容
+      fontSize: 16, // 字体大小
+      fontFamily: 'Arial', // 字体类型
+      fontColor: '#000', // 字体颜色
+      textAlign: 'left', // 文本对齐方式
+      textBaseline: 'middle', // 文本垂直对齐方式
+      lineHeight: 1.5, // 文本行高
+      textWidth: 100, // 文本内容宽度
+    }
+  }
+
+  draw(): void {
     if (!this.ctx) {
       console.error('CanvasRenderingContext2D 未初始化');
       return;
     }
     this.ctx.save();
-    this.ctx.font = '16px Arial';
+    this.ctx.font = `${this.options.fontSize}px ${this.options.fontFamily}`; // 设置字体样式
     this.ctx.fillStyle = '#000';
-    this.ctx.fillText(this.text, this.x, this.y + 16); // 绘制文本，y坐标加上字体高度的一半
+    this.ctx.fillText(this.options.text, this.options.x, this.options.y + 16); // 绘制文本，y坐标加上字体高度的一半
     this.ctx.restore();
   }
   

@@ -19,7 +19,7 @@ export default class ElementsMediator {
   crateElement(type: ElementType, ElementJSON?: DrawElementPartial): void {
     const element = ElementsFactory.createElement(type, this.ctx, ElementJSON);
     element.setMiddleWare(this); // 设置中介者
-    this.elements.set(element.id, element);
+    this.elements.set(element.options.id, element);
   }
 
   /** 获取元素 */

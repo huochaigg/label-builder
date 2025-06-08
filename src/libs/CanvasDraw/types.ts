@@ -1,7 +1,7 @@
-import TextElement from './core/elements/TextElements';
-import EwmElement from './core/elements/EwmElements';
-import ImageElement from './core/elements/ImageElements';
-import GraphElements from './core/elements/GraphElements';
+import TextElement, { TextElementOptions } from './core/elements/TextElements';
+import EwmElement, { EwmElementOptions } from './core/elements/EwmElements';
+import ImageElement, { ImageElementOptions } from './core/elements/ImageElements';
+import GraphElement, { GraphElementOptions } from './core/elements/GraphElements';
 
 
 export enum PanelType {
@@ -31,12 +31,19 @@ export enum ControllerType {
   拉伸 = 'STRETCH',
 }  
 
-/** 绘制的Elements类型 */ 
 export type DrawElement = 
-  | TextElement 
-  | EwmElement 
+  | TextElement
+  | EwmElement
   | ImageElement
-  | GraphElements;
+  | GraphElement;
+ 
+
+/** 绘制的Elements类型 */ 
+export type DrawElementOptions = 
+  | TextElementOptions 
+  | EwmElementOptions  
+  | ImageElementOptions 
+  | GraphElementOptions;
 
 /** 
  * 绘制时可以使用
@@ -59,7 +66,7 @@ export interface CanvasDrawJSON {
   /** 标签的高度 */
   height: number;
   /** 元素列表 */
-  elements: DrawElement[];
+  elements: DrawElementPartial[];
 }
 
 export interface CanvasDrawOptions {

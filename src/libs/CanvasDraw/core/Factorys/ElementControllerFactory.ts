@@ -7,8 +7,7 @@ import ScaleController from "../controller/ScaleController";
 import RotateController from "../controller/RotateController";
 import StretchController from "../controller/StretchController";
 
-import BaseElements from "../elements/BaseElements";
-import { ControllerType } from "../../types";
+import { ControllerType, DrawElement } from "../../types";
 
 export default class ElementControllerFactory {
   /**
@@ -17,7 +16,7 @@ export default class ElementControllerFactory {
    * @param element 元素实例
    * @returns 控制器实例
    */
-  static createController(type: ControllerType, element: BaseElements): BaseController {
+  static createController(type: ControllerType, element: DrawElement): BaseController {
     switch (type) {
       case ControllerType.删除:
         return new DeleteController(element);
