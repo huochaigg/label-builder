@@ -1,7 +1,7 @@
 import ElementsMediator from '../mediator/ElementsMediator';
-import { CanvasDrawOptions, CanvasDrawJSON, DrawElementPartial, ElementType } from '../../types';
+import { CanvasDrawOptions, CanvasDrawJSON, DrawElementPartial, ElementType, EventType, EventOptions } from '../../types';
 import utils from '../../utils';
-
+import EventEmiter from '../../utils/EventEmiter';
 /***
  * 一个总的管理器
  * 用于管理和协调画布绘制的各个方面，包括元素的创建、绘制和获取JSON数据等。
@@ -14,6 +14,7 @@ import utils from '../../utils';
 export default class CanvasDrawManager {
 
   elementsMediator: ElementsMediator | null = null; // 元素中间件，用于管理和协调元素
+  eventEmitter: EventEmiter<(...args: unknown[]) => void, EventType> = new EventEmiter(); // 事件发布订阅模式
   private options: CanvasDrawOptions; // 画布绘制选项
   private ctx: CanvasRenderingContext2D | null = null; // 画布的上下文对象
   
@@ -36,8 +37,11 @@ export default class CanvasDrawManager {
 
   /** 获取当前canvas绘制标签的JSON对象 */
   getDrawJSON(): CanvasDrawJSON | null {
-    // TODO
-    return null;
+    return {
+      width: this.options.width,
+      height: this.options.height,
+      elements: this.elementsMediator?.getAllElements().map(element => element.options) || []
+    }
   }
 
   /** 获取当前canvas的base64对象 */
@@ -94,5 +98,54 @@ export default class CanvasDrawManager {
 
     ctx.canvas.width = adjustedWidth * dpr;
     ctx.canvas.height = adjustedHeight * dpr;
+  }
+
+  /** 订阅 */
+  subscribe(callback: (res: EventOptions) => void): void {
+    const currentElement = this.elementsMediator?.getCurrentElement();
+    const resultData: EventOptions['data'] = {
+      currentElement: currentElement?.options,
+      form: this.elementsMediator?.getCurrentElement()?.getFormData()
+    }
+    this.eventEmitter.on(EventType.元素选中, () => {
+      callback({ 
+        type: EventType.元素选中, 
+        data: resultData
+      });
+    });
+    this.eventEmitter.on(EventType.元素取消选中, () => {
+      callback({ 
+        type: EventType.元素取消选中, 
+        data: resultData
+      });
+    });
+    this.eventEmitter.on(EventType.元素清除, () => {
+      callback({ 
+        type: EventType.元素清除, 
+        data: resultData
+      });
+    });
+    this.eventEmitter.on(EventType.元素复制, () => {
+      callback({ 
+        type: EventType.元素复制, 
+        data: resultData
+      });
+    });
+    this.eventEmitter.on(EventType.元素粘贴, () => {
+      callback({ 
+        type: EventType.元素粘贴, 
+        data: resultData
+      });
+    });
+  }
+
+  /** 销毁 */
+  destory(): void {
+    if (this.elementsMediator) {
+      this.elementsMediator.clearElements(); // 清除所有元素
+      this.elementsMediator = null; // 清空元素中间件
+    }
+    this.ctx = null; // 清空上下文对象
+    this.eventEmitter.clear(); // 清空事件订阅
   }
 }

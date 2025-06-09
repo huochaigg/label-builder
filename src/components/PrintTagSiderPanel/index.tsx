@@ -13,6 +13,10 @@ export default function PrintTagSiderPanel(props: PrintTagSiderPanelProps) {
     props.triggerCreatePanel(type)
   }
 
+  const handleClickSaveDrawJson = () => {
+    props.handleClickSaveDrawJson()
+  }
+
   return <section className={styles.printTagSiderPanel}>
     <div className='panel_list'>
       {
@@ -29,5 +33,6 @@ export default function PrintTagSiderPanel(props: PrintTagSiderPanelProps) {
         ))
       }
     </div>
+    <button className='save_button' onClick={handleClickSaveDrawJson}>保存格式</button>
   </section>
 }

@@ -1,6 +1,6 @@
 import ControllerMediator from '../mediator/ControllerMediator';
 import ElementsMediator from '../mediator/ElementsMediator';
-import { ElementType, DrawElementPartial } from '../../types';
+import { ElementType, DrawElementPartial, PanelRenderJSONType } from '../../types';
 import { createSymbol } from '../../utils/constants';
 
 export interface BaseElementOptions {
@@ -20,6 +20,8 @@ export default abstract class BaseElement<T extends Partial<BaseElementOptions>>
   controller: ControllerMediator; // 用于存储控制器实例
   middleWare: ElementsMediator | null = null; // 控制器中间件实例
   abstract draw(): void; // 绘制元素的方法
+  abstract isHit(x: number, y: number): boolean; // 检测是否被点击的方法
+  abstract getFormData(): PanelRenderJSONType[]; // 获取元素的表单数据方法
 
   constructor(ctx: CanvasRenderingContext2D, drawJSON?: DrawElementPartial) {
     this.ctx = ctx; // 初始化画布的上下文对象

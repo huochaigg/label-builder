@@ -1,5 +1,5 @@
 import BaseElement, { BaseElementOptions } from './BaseElements';
-import { ElementType, DrawElementPartial } from '../../types';
+import { ElementType, DrawElementPartial, PanelRenderJSONType } from '../../types';
 
 export interface ImageElementOptions extends BaseElementOptions {
   /** 元素类型 */
@@ -32,4 +32,21 @@ export default class ImagesElements extends BaseElement<ImageElementOptions> {
     this.ctx.restore();
   }
 
+  isHit(x: number, y: number): boolean {
+    if (!this.ctx) {
+      console.error('CanvasRenderingContext2D 未初始化');
+      return false;
+    }
+    // 检查点击位置是否在元素范围内
+    const { x: elementX, y: elementY, width, height } = this.options;
+    return x >= elementX && x <= elementX + width && y >= elementY && y <= elementY + height;
+  }
+
+  /**
+   * 获取元素的表单数据
+   * @returns 元素的表单数据
+   */
+  getFormData(): PanelRenderJSONType[] {
+    return []
+  }
 }

@@ -52,6 +52,10 @@ button {
   font-family: fantasy;
 }
 
+html body button:focus, html body button:focus-visible{
+  outline: none;
+}
+
 button:hover {
   background-color: var(--color-secondary);
 }

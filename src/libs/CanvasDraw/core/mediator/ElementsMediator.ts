@@ -51,6 +51,11 @@ export default class ElementsMediator {
     this.elements.set(id, newElement);
   }
 
+  /** 获取当前操作的元素 */
+  getCurrentElement(): DrawElement | null {
+    return this.currentElement;
+  }
+
   /** 获取所有元素 */
   getAllElements(): DrawElement[] {
     return Array.from(this.elements.values());

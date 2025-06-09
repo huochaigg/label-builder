@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "antd": "^5.25.4",
     "electron-debug": "^4.1.0",
     "jsbarcode": "^3.11.6",
     "react": "^18.2.0",

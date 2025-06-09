@@ -5,6 +5,7 @@ export interface PrintTagSiderPanelProps {
   direction?: 'horizontal' | 'vertical';
   /** 点击面板触发创建element */ 
   triggerCreatePanel: (type: ElementType) => void;
+  handleClickSaveDrawJson: () => void;
 }
 
 export const panelList = [
