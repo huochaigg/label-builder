@@ -25,9 +25,6 @@ export default abstract class BaseElement<T extends Partial<BaseElementOptions>>
     this.ctx = ctx; // 初始化画布的上下文对象
     this.options = { ...this.options, ...drawJSON }; // 合并默认选项和传入的选项
     this.controller = new ControllerMediator(); // 初始化控制器中间件
-    if (drawJSON) {
-      this.draw() 
-    }
   }
 
   setMiddleWare(middleWare: ElementsMediator): void {

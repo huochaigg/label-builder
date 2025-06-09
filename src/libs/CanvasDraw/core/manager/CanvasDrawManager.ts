@@ -1,10 +1,16 @@
-/***
- * 一个总的管理器
- */
 import ElementsMediator from '../mediator/ElementsMediator';
 import { CanvasDrawOptions, CanvasDrawJSON, DrawElementPartial, ElementType } from '../../types';
 import utils from '../../utils';
 
+/***
+ * 一个总的管理器
+ * 用于管理和协调画布绘制的各个方面，包括元素的创建、绘制和获取JSON数据等。
+ * 
+ * @param {Object} options - 画布绘制选项，包括上下文、宽度和高度等。
+ * @param {CanvasRenderingContext2D} options.ctx - CanvasRenderingContext2D 实例，用于绘制元素。
+ * @param {number} [options.width=500] - 画布的宽度，默认为 500px。
+ * @param {number} [options.height] - 画布的高度，根据宽度自适应计算
+ */
 export default class CanvasDrawManager {
 
   elementsMediator: ElementsMediator | null = null; // 元素中间件，用于管理和协调元素

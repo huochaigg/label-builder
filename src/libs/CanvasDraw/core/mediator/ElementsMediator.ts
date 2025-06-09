@@ -11,6 +11,9 @@ export default class ElementsMediator {
 
   private ctx: CanvasRenderingContext2D;
 
+  /** 当前操作的元素 */
+  currentElement: DrawElement | null = null; 
+
   constructor(ctx: CanvasRenderingContext2D) {
     this.ctx = ctx;
   }
@@ -34,6 +37,9 @@ export default class ElementsMediator {
       return;
     }
     this.elements.delete(id);
+    if (this.currentElement?.options.id === id) {
+      this.setCurrentElement(null); // 如果删除的是当前操作的元素，则清除当前元素
+    }
   }
 
   /** 更新元素 */
@@ -53,6 +59,7 @@ export default class ElementsMediator {
   /** 清除所有元素 */
   clearElements(): void {
     this.elements.clear();
+    this.setCurrentElement(null); // 清除当前操作的元素
   }
 
   /** 获取元素数量 */
@@ -81,4 +88,7 @@ export default class ElementsMediator {
     });
   } 
 
+  setCurrentElement(element: DrawElement | null): void {
+    this.currentElement = element;
+  }
 }
